@@ -1,22 +1,27 @@
 /* =========================================================================
    Darwin Lemus — portfolio
-   Direction: "observatory plate". Deep ink ground, warm ivory type, amber
-   instrument accent. System serif + monospace, no webfont CDN.
+   Direction: "observatory plate". Deep ink ground, warm ivory type, Carolina
+   blue accent with amber as the single warm highlight. System serif + mono,
+   no webfont CDN.
    Retheming is mostly this one token block.
    ========================================================================= */
 
 :root {
-  --ink:      #0a0e1a;  /* ground — navy-biased, not neutral black */
-  --plate:    #0f1524;  /* raised surfaces */
-  --plate-lit:#151c30;
-  --rule:     #212b42;  /* hairlines */
-  --rule-lit: #33405f;
+  --ink:      #08111c;  /* ground — navy-biased, not neutral black */
+  --plate:    #0d1826;  /* raised surfaces */
+  --plate-lit:#132133;
+  --rule:     #1c3247;  /* hairlines */
+  --rule-lit: #2d5273;
 
   --ivory:    #ece5d8;  /* warm paper white against the cool ground */
   --dim:      #939cb2;
   --faint:    #626b83;
 
-  --amber:    #f0a830;
+  --carolina:     #4b9cd3;  /* UNC Carolina Blue, Pantone 542 */
+  --carolina-lit: #7bafd4;
+  --carolina-dim: rgba(75, 156, 211, 0.14);
+
+  --amber:    #f0a830;      /* kept as the one warm accent */
   --amber-dim:rgba(240, 168, 48, 0.14);
 
   --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
@@ -53,7 +58,7 @@ h1, h2, h3 { text-wrap: balance; }
 .skip-link {
   position: absolute;
   left: -9999px;
-  background: var(--amber);
+  background: var(--carolina);
   color: var(--ink);
   padding: 10px 16px;
   z-index: 200;
@@ -62,7 +67,7 @@ h1, h2, h3 { text-wrap: balance; }
 }
 .skip-link:focus { left: 0; top: 0; }
 
-:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--carolina); outline-offset: 3px; }
 
 /* --- Header --------------------------------------------------------------*/
 
@@ -74,7 +79,7 @@ h1, h2, h3 { text-wrap: balance; }
   border-bottom: 1px solid transparent;
 }
 .site-header.is-stuck {
-  background: rgba(10, 14, 26, 0.82);
+  background: rgba(8, 17, 28, 0.82);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom-color: var(--rule);
@@ -97,7 +102,7 @@ h1, h2, h3 { text-wrap: balance; }
   color: var(--ivory);
   transition: color 0.2s var(--ease);
 }
-.nav-brand:hover { color: var(--amber); }
+.nav-brand:hover { color: var(--carolina); }
 
 .nav-links {
   display: flex;
@@ -116,7 +121,7 @@ h1, h2, h3 { text-wrap: balance; }
   border-bottom: 1px solid transparent;
 }
 .nav-links a:hover { color: var(--ivory); }
-.nav-links a.active { color: var(--amber); border-bottom-color: var(--amber); }
+.nav-links a.active { color: var(--carolina); border-bottom-color: var(--carolina); }
 
 .nav-cta {
   text-decoration: none;
@@ -126,7 +131,7 @@ h1, h2, h3 { text-wrap: balance; }
   white-space: nowrap;
   transition: color 0.2s var(--ease);
 }
-.nav-cta:hover { color: var(--amber); }
+.nav-cta:hover { color: var(--carolina); }
 
 @media (max-width: 660px) {
   .nav { gap: 14px; padding: 14px 18px; }
@@ -159,8 +164,8 @@ h1, h2, h3 { text-wrap: balance; }
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(to bottom, rgba(10,14,26,0.70) 0%, rgba(10,14,26,0) 30%),
-    linear-gradient(to top,    rgba(10,14,26,0.94) 0%, rgba(10,14,26,0) 50%);
+    linear-gradient(to bottom, rgba(8,17,28,0.70) 0%, rgba(8,17,28,0) 30%),
+    linear-gradient(to top,    rgba(8,17,28,0.94) 0%, rgba(8,17,28,0) 50%);
 }
 
 .hero-identity {
@@ -197,7 +202,7 @@ h1, h2, h3 { text-wrap: balance; }
   color: var(--ivory);
   opacity: 0.84;
 }
-.hero .lede em { font-style: italic; color: var(--amber); }
+.hero .lede em { font-style: italic; color: var(--carolina-lit); }
 
 /* Simulation controls, pinned to the bottom of the hero */
 .sim-bar {
@@ -206,7 +211,7 @@ h1, h2, h3 { text-wrap: balance; }
   bottom: 0;
   padding: 12px 28px 14px;
   border-top: 1px solid var(--rule);
-  background: rgba(10, 14, 26, 0.62);
+  background: rgba(8, 17, 28, 0.62);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -234,7 +239,7 @@ h1, h2, h3 { text-wrap: balance; }
   transition: all 0.18s var(--ease);
 }
 .sim-tab:hover, .sim-btn:hover { color: var(--ivory); border-color: var(--rule-lit); }
-.sim-tab.is-active { color: var(--amber); border-color: var(--amber); background: var(--amber-dim); }
+.sim-tab.is-active { color: var(--carolina); border-color: var(--carolina); background: var(--carolina-dim); }
 .sim-controls { display: flex; gap: 4px; }
 
 .sim-readout {
@@ -293,36 +298,30 @@ h1, h2, h3 { text-wrap: balance; }
   color: var(--dim);
   font-size: 16.5px;
 }
-.section-sub a { color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(240,168,48,0.35); }
-.section-sub a:hover { border-bottom-color: var(--amber); }
+.section-sub a { color: var(--carolina); text-decoration: none; border-bottom: 1px solid rgba(75,156,211,0.4); }
+.section-sub a:hover { border-bottom-color: var(--carolina); }
 
 /* --- Work catalog --------------------------------------------------------*/
 
 .catalog { border-top: 1px solid var(--rule); }
 
 .entry {
-  display: grid;
-  grid-template-columns: 1fr minmax(0, 290px);
-  gap: 8px 44px;
-  padding: 26px 4px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 28px;
+  padding: 19px 4px;
   border-bottom: 1px solid var(--rule);
   transition: background 0.22s var(--ease), padding-left 0.22s var(--ease);
 }
-.entry:hover { background: rgba(236, 229, 216, 0.022); padding-left: 12px; }
-
-@media (max-width: 720px) {
-  .entry { grid-template-columns: 1fr; gap: 14px; }
-  .entry:hover { padding-left: 4px; }
-}
-
-.entry-main { min-width: 0; }
+.entry:hover { background: rgba(75, 156, 211, 0.04); padding-left: 12px; }
 
 .entry-title {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 0 0 8px;
+  min-width: 260px;
 }
 .entry-title h3 {
   margin: 0;
@@ -341,29 +340,17 @@ h1, h2, h3 { text-wrap: balance; }
 }
 .badge-live { border-color: var(--amber); color: var(--amber); background: var(--amber-dim); }
 
-.entry p {
-  margin: 0;
-  color: var(--dim);
-  font-size: 16px;
-  line-height: 1.65;
-  max-width: 58ch;
-}
-
-.entry-meta { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
-@media (min-width: 721px) { .entry-meta { align-items: flex-end; text-align: right; } }
-
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 5px 10px;
   list-style: none;
-  margin: 0;
+  margin: 0 auto 0 0;
   padding: 0;
   font-family: var(--mono);
   font-size: 11.5px;
   color: var(--faint);
 }
-@media (min-width: 721px) { .tags { justify-content: flex-end; } }
 
 .entry-links { display: flex; gap: 16px; }
 .entry-links a {
@@ -371,11 +358,11 @@ h1, h2, h3 { text-wrap: balance; }
   font-size: 12px;
   letter-spacing: 0.05em;
   text-decoration: none;
-  color: var(--amber);
+  color: var(--carolina);
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s var(--ease);
 }
-.entry-links a:hover { border-bottom-color: var(--amber); }
+.entry-links a:hover { border-bottom-color: var(--carolina); }
 
 /* --- More repos ----------------------------------------------------------*/
 
@@ -414,17 +401,17 @@ h1, h2, h3 { text-wrap: balance; }
   text-decoration: none;
   min-width: 200px;
 }
-.repo-list li > a:first-child:hover { color: var(--amber); }
+.repo-list li > a:first-child:hover { color: var(--carolina); }
 .repo-list span { color: var(--faint); margin-right: auto; font-size: 15px; }
 .repo-src {
   font-family: var(--mono);
   font-size: 11.5px;
   letter-spacing: 0.05em;
-  color: var(--amber);
+  color: var(--carolina);
   text-decoration: none;
   border-bottom: 1px solid transparent;
 }
-.repo-src:hover { border-bottom-color: var(--amber); }
+.repo-src:hover { border-bottom-color: var(--carolina); }
 
 /* --- Prose ---------------------------------------------------------------*/
 
@@ -435,74 +422,38 @@ h1, h2, h3 { text-wrap: balance; }
 
 /* --- Contact -------------------------------------------------------------*/
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+.contact-list {
+  list-style: none;
+  margin: 34px 0 0;
+  padding: 0;
   max-width: var(--measure);
-  margin-bottom: 30px;
+  border-top: 1px solid var(--rule);
 }
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-@media (max-width: 560px) { .field-row { grid-template-columns: 1fr; } }
-
-.field { display: flex; flex-direction: column; gap: 8px; }
-.field span {
+.contact-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 24px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.contact-key {
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--faint);
+  min-width: 92px;
 }
-.field input, .field textarea {
-  font-family: var(--serif);
-  font-size: 16px;
-  color: var(--ivory);
-  background: var(--plate);
-  border: 1px solid var(--rule);
-  padding: 12px 14px;
-  resize: vertical;
-  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
-}
-.field input:focus, .field textarea:focus {
-  outline: none;
-  border-color: var(--amber);
-  background: var(--plate-lit);
-}
-
-.btn {
-  display: inline-block;
+.contact-list a {
   font-family: var(--mono);
-  font-size: 12.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 15px;
+  color: var(--carolina);
   text-decoration: none;
-  padding: 13px 26px;
-  border: 1px solid var(--amber);
-  background: transparent;
-  color: var(--amber);
-  cursor: pointer;
-  align-self: flex-start;
-  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s var(--ease);
 }
-.btn:hover { background: var(--amber); color: var(--ink); }
-
-.contact-alt {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 22px;
-  padding-top: 24px;
-  border-top: 1px solid var(--rule);
-  max-width: var(--measure);
-}
-.contact-alt a {
-  font-family: var(--mono);
-  font-size: 12.5px;
-  letter-spacing: 0.05em;
-  color: var(--dim);
-  text-decoration: none;
-  transition: color 0.2s var(--ease);
-}
-.contact-alt a:hover { color: var(--amber); }
+.contact-list a:hover { border-bottom-color: var(--carolina); }
 
 /* --- Footer --------------------------------------------------------------*/
 
