@@ -11,6 +11,7 @@
 const DT = 0.001;          // timestep            (main.cpp)
 const STEPS_PER_FRAME = 10; // physics substeps    (main.cpp)
 const MIN_DIST = 0.0001;   // softening clamp     (force.cpp)
+const TRAIL_MAX = 700;     // frames of path history kept per body
 
 const PRESETS = [
   {
@@ -145,6 +146,10 @@ class ThreeBodySim {
     this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     this.w = rect.width;
     this.h = rect.height;
+    // Off-centre on wide screens so the orbit doesn't sit under the name.
+    const wide = this.w / this.h > 1.2;
+    this.cx = this.w * (wide ? 0.58 : 0.5);
+    this.cy = this.h * (wide ? 0.42 : 0.38);
   }
 
   /** Fit the preset's initial extent to the canvas so every preset frames nicely. */
@@ -152,7 +157,8 @@ class ThreeBodySim {
     let maxR = 0;
     for (const b of bodies) maxR = Math.max(maxR, Math.hypot(b.x, b.y));
     if (maxR < 1e-6) maxR = 1;
-    return (Math.min(this.w, this.h) * 0.36) / maxR;
+    const room = Math.min(this.cx, this.w - this.cx, this.cy, this.h - this.cy);
+    return (room * 0.74) / maxR;
   }
 
   load(index) {
@@ -167,6 +173,7 @@ class ThreeBodySim {
       yPrev: b.y - b.vy * DT,
       mass: b.mass,
       color: COLORS[i % COLORS.length],
+      trail: [],
     }));
     this.scale = this.computeScale(this.bodies);
     this.clear();
@@ -182,7 +189,7 @@ class ThreeBodySim {
 
   radius(mass) {
     // Cube-root so a 10x mass reads as bigger without swamping the frame.
-    return Math.min(13, Math.max(3.5, 3.2 * Math.cbrt(mass) + 1.4));
+    return Math.min(16, Math.max(4.5, 4.2 * Math.cbrt(mass) + 1.6));
   }
 
   step() {
@@ -201,12 +208,41 @@ class ThreeBodySim {
 
   draw() {
     const { ctx } = this;
-    // Translucent wipe instead of a hard clear — this is what leaves the trails.
-    ctx.fillStyle = 'rgba(10, 14, 26, 0.11)';
+    ctx.fillStyle = '#0a0e1a';
     ctx.fillRect(0, 0, this.w, this.h);
 
-    const cx = this.w / 2;
-    const cy = this.h / 2;
+    const cx = this.cx;
+    const cy = this.cy;
+
+    // Two strokes per body: the full path faint, the recent tail brighter.
+    // Cheaper than per-segment alpha and reads the same.
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    for (const b of this.bodies) {
+      const t = b.trail;
+      if (t.length < 4) continue;
+
+      ctx.strokeStyle = b.color;
+      ctx.globalAlpha = 0.26;
+      ctx.lineWidth = 1.1;
+      ctx.beginPath();
+      ctx.moveTo(cx + t[0] * this.scale, cy + t[1] * this.scale);
+      for (let i = 2; i < t.length; i += 2) {
+        ctx.lineTo(cx + t[i] * this.scale, cy + t[i + 1] * this.scale);
+      }
+      ctx.stroke();
+
+      const recent = Math.max(0, t.length - 240);
+      ctx.globalAlpha = 0.75;
+      ctx.lineWidth = 1.7;
+      ctx.beginPath();
+      ctx.moveTo(cx + t[recent] * this.scale, cy + t[recent + 1] * this.scale);
+      for (let i = recent + 2; i < t.length; i += 2) {
+        ctx.lineTo(cx + t[i] * this.scale, cy + t[i + 1] * this.scale);
+      }
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
 
     for (const b of this.bodies) {
       const sx = cx + b.x * this.scale;
@@ -252,6 +288,10 @@ class ThreeBodySim {
   frame() {
     if (this.running && this.visible) {
       for (let s = 0; s < STEPS_PER_FRAME; s++) this.step();
+      for (const b of this.bodies) {
+        b.trail.push(b.x, b.y);
+        if (b.trail.length > TRAIL_MAX * 2) b.trail.splice(0, 2);
+      }
     }
     if (this.visible) this.draw();
     requestAnimationFrame(() => this.frame());
@@ -283,8 +323,8 @@ class ThreeBodySim {
       this.drag = null;
       if (this.bodies.length >= 10) return; // MAX_BODIES, same as the C++ build
 
-      const wx = (x0 - this.w / 2) / this.scale;
-      const wy = (y0 - this.h / 2) / this.scale;
+      const wx = (x0 - this.cx) / this.scale;
+      const wy = (y0 - this.cy) / this.scale;
       // Pull-back-to-launch: drag away from the spawn point to set speed.
       const vx = ((x0 - x1) / this.scale) * 0.6;
       const vy = ((y0 - y1) / this.scale) * 0.6;
@@ -295,6 +335,7 @@ class ThreeBodySim {
         yPrev: wy - vy * DT,
         mass: 1.0,
         color: COLORS[this.bodies.length % COLORS.length],
+        trail: [],
       });
     };
 
