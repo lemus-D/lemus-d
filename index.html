@@ -1,66 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darwin's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darwin Lemus — robotics, computer vision, simulation</title>
+<meta name="description" content="Darwin Lemus — computer science student at UNC Chapel Hill working on robotics, computer vision, and physics simulation.">
+<meta name="theme-color" content="#0a0e1a">
+<link rel="stylesheet" href="style.css">
 </head>
-<section id="hero">
-    <h1>Hi, I'm Darwin</h1>
-    <p>Computer Science Student | Maker | Physicist </p>
-</section>
-
 <body>
-    <!-- Header Section -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#projects">Projects</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- About Me Section -->
-    <section id="about">
-        <h1>About Me</h1>
-        <p>Hello! I'm Darwin, a computer science student at UNC Chapel Hill. I enjoy working with robotics and AI.</p>
-    </section>
+<a class="skip-link" href="#work">Skip to content</a>
 
-    <!-- Resume Section -->
-    <section id="resume">
-        <h1>Resume</h1>
-        <p>You can find my resume <a href="resume.pdf" target="_blank">here</a>.</p>
-    </section>
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="nav-brand" href="#top">DARWIN LEMUS</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="https://github.com/lemus-D" target="_blank" rel="noopener">GitHub ↗</a>
+  </nav>
+</header>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h1>Projects</h1>
-        <ul>
-            <li>Project 1: <a href="#">Description or link</a></li>
-            <li>Project 2: <a href="#">Description or link</a></li>
-            <li>Project 3: <a href="#">Description or link</a></li>
-        </ul>
-    </section>
+<main>
 
-    <section id="contact">
-        <h1>Contact Me</h1>
-        <form action="https://formspree.io/f/xpwqznww" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
+  <!-- Hero: the simulation itself ------------------------------------------>
+  <section id="top" class="hero">
+    <canvas id="sim-canvas" aria-label="Interactive three-body gravity simulation"></canvas>
+    <div class="hero-scrim"></div>
 
+    <div class="hero-identity">
+      <div class="hero-identity-inner">
+        <p class="coords">Chapel Hill, North Carolina</p>
+        <h1>Darwin Lemus</h1>
+        <p class="lede">
+          Computer science at UNC. I build things that <em>see</em> and <em>move</em> —
+          robotics, computer vision, and the physics running behind this page.
+        </p>
+      </div>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Darwin</p>
-    </footer>
+    <div class="sim-bar">
+      <div class="sim-bar-inner">
+        <div id="sim-presets" class="sim-tabs" role="group" aria-label="Simulation presets"></div>
+        <div class="sim-controls">
+          <button type="button" id="sim-play" class="sim-btn">Pause</button>
+          <button type="button" id="sim-reset" class="sim-btn">Reset</button>
+        </div>
+        <div class="sim-readout">
+          <span id="sim-blurb"></span>
+          <span class="sim-hint">Drag on the field to fling in a new body</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- Work ------------------------------------------------------------------>
+  <section id="work" class="section">
+    <div class="section-head">
+      <h2>Work</h2>
+      <span class="section-label">Source public on all</span>
+    </div>
+    <p class="section-sub">
+      Things I built and finished. The simulation above is the first entry —
+      it's the same integrator as the desktop build, running on your machine.
+    </p>
+
+    <div class="catalog">
+
+      <article class="entry">
+        <div class="entry-main">
+          <div class="entry-title">
+            <h3>Three Body Problem</h3>
+            <span class="badge badge-live">Running above</span>
+          </div>
+          <p>Real-time gravitational simulation with six preset configurations and a full custom-body setup UI. Position-Verlet integrator and pairwise Newtonian gravity, both written from scratch.</p>
+        </div>
+        <div class="entry-meta">
+          <ul class="tags"><li>C++</li><li>raylib</li><li>raygui</li><li>Numerical methods</li></ul>
+          <div class="entry-links">
+            <a href="#top">Try it ↑</a>
+            <a href="https://github.com/lemus-D/3BodyProblem" target="_blank" rel="noopener">Source ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-main">
+          <div class="entry-title"><h3>clashBot</h3></div>
+          <p>Clash Royale automation framework: computer-vision unit detection, live game-state tracking, and an imitation-learning policy trained on recorded play.</p>
+        </div>
+        <div class="entry-meta">
+          <ul class="tags"><li>Python</li><li>PyTorch</li><li>OpenCV</li><li>Roboflow</li><li>Tesseract</li></ul>
+          <div class="entry-links">
+            <a href="https://github.com/lemus-D/clashBot" target="_blank" rel="noopener">Source ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-main">
+          <div class="entry-title"><h3>YOLO Human Detector</h3></div>
+          <p>Person detection over a live webcam stream that fires a Telegram alert the moment someone enters frame.</p>
+        </div>
+        <div class="entry-meta">
+          <ul class="tags"><li>Python</li><li>YOLOv5</li><li>PyTorch</li><li>Telegram API</li></ul>
+          <div class="entry-links">
+            <a href="https://github.com/lemus-D/Yolo-human-detector" target="_blank" rel="noopener">Source ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-main">
+          <div class="entry-title">
+            <h3>AR Posters</h3>
+            <span class="badge">Live demo</span>
+          </div>
+          <p>Marker-triggered augmented reality for research posters — point a phone at the printed poster and 3D models and video play on top of it. Built so anyone can drop in their own assets and reuse it.</p>
+        </div>
+        <div class="entry-meta">
+          <ul class="tags"><li>A-Frame</li><li>MindAR</li><li>WebXR</li><li>JavaScript</li></ul>
+          <div class="entry-links">
+            <a href="https://lemus-d.github.io/ARPosters/" target="_blank" rel="noopener">Open ↗</a>
+            <a href="https://github.com/lemus-D/ARPosters" target="_blank" rel="noopener">Source ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-main">
+          <div class="entry-title"><h3>HackNC 2025</h3></div>
+          <p>Flask app that ingests images and documents and uses Google Gemini to pull out their contents and summarize them. Built over one weekend.</p>
+        </div>
+        <div class="entry-meta">
+          <ul class="tags"><li>Python</li><li>Flask</li><li>Gemini API</li><li>PIL</li></ul>
+          <div class="entry-links">
+            <a href="https://github.com/lemus-D/HackNC2025" target="_blank" rel="noopener">Source ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-main">
+          <div class="entry-title"><h3>Carolina Data Challenge</h3></div>
+          <p>Regression and machine-learning models over business spreadsheet data for the 2025 Carolina Data Challenge, with the full analysis notebook.</p>
+        </div>
+        <div class="entry-meta">
+          <ul class="tags"><li>Python</li><li>pandas</li><li>scikit-learn</li><li>matplotlib</li></ul>
+          <div class="entry-links">
+            <a href="https://github.com/lemus-D/CDC2025" target="_blank" rel="noopener">Source ↗</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <details class="more-repos">
+      <summary><span class="chev" aria-hidden="true">›</span> Everything else on GitHub</summary>
+      <ul class="repo-list">
+        <li>
+          <a href="https://lemus-d.github.io/EELabDemos/" target="_blank" rel="noopener">EELabDemos</a>
+          <span>AR demos for electrical engineering labs</span>
+          <a class="repo-src" href="https://github.com/lemus-D/EELabDemos" target="_blank" rel="noopener">source ↗</a>
+        </li>
+        <li>
+          <a href="https://lemus-d.github.io/researchPosterDemo/" target="_blank" rel="noopener">researchPosterDemo</a>
+          <span>AR research-poster demo</span>
+          <a class="repo-src" href="https://github.com/lemus-D/researchPosterDemo" target="_blank" rel="noopener">source ↗</a>
+        </li>
+        <li>
+          <a href="https://lemus-d.github.io/demo/" target="_blank" rel="noopener">demo</a>
+          <span>A-Frame / MindAR sandbox</span>
+          <a class="repo-src" href="https://github.com/lemus-D/demo" target="_blank" rel="noopener">source ↗</a>
+        </li>
+        <li>
+          <a href="https://github.com/lemus-D/Control-Script" target="_blank" rel="noopener">Control-Script</a>
+          <span>Image-recognition game automation</span>
+        </li>
+        <li>
+          <a href="https://github.com/lemus-D/signAlphabetInterpriter" target="_blank" rel="noopener">signAlphabetInterpriter</a>
+          <span>Sign-language alphabet recognition</span>
+        </li>
+        <li>
+          <a href="https://lemus-d.github.io/SN020/" target="_blank" rel="noopener">SN020</a>
+          <span>Coursework site</span>
+          <a class="repo-src" href="https://github.com/lemus-D/SN020" target="_blank" rel="noopener">source ↗</a>
+        </li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- About ------------------------------------------------------------------>
+  <section id="about" class="section">
+    <div class="section-head">
+      <h2>About</h2>
+      <span class="section-label">UNC Chapel Hill</span>
+    </div>
+    <div class="prose">
+      <p>
+        I'm a computer science student at UNC Chapel Hill. Most of what I build sits where software
+        meets the physical world — robots, cameras, and simulations of things that move.
+      </p>
+      <p>
+        I like problems where you can <strong>check whether the answer is right</strong>: does the
+        detector find the person, does the arm reach the pose, does the orbit close. That's pulled me
+        toward a lot of computer vision and a lot of numerical integration.
+      </p>
+      <p>
+        Outside of that I make things — augmented-reality demos for other people's research posters,
+        bots that play games badly, and the occasional simulation I can't stop tuning.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact ---------------------------------------------------------------->
+  <section id="contact" class="section">
+    <div class="section-head">
+      <h2>Get in touch</h2>
+      <span class="section-label">Open to internships</span>
+    </div>
+    <p class="section-sub">Happy to talk about robotics, vision work, or anything moving under its own power.</p>
+
+    <form class="contact-form" action="https://formspree.io/f/xpwqznww" method="POST">
+      <div class="field-row">
+        <label class="field">
+          <span>Name</span>
+          <input type="text" name="name" required autocomplete="name">
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+      </div>
+      <label class="field">
+        <span>Message</span>
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button class="btn" type="submit">Send message</button>
+    </form>
+
+    <div class="contact-alt">
+      <a href="https://github.com/lemus-D" target="_blank" rel="noopener">github.com/lemus-D ↗</a>
+      <a href="resume.pdf" target="_blank" rel="noopener">Résumé (PDF) ↗</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year">2026</span> Darwin Lemus</p>
+  <p>Simulation runs on your machine — it isn't a video</p>
+</footer>
+
+<script src="sim.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
