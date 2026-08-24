@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Darwin Lemus — robotics, computer vision, simulation</title>
-<meta name="description" content="Darwin Lemus — computer science student at UNC Chapel Hill working on robotics, computer vision, and physics simulation.">
-<meta name="theme-color" content="#0a0e1a">
+<title>Darwin Lemus — computer vision, robotics, simulation</title>
+<meta name="description" content="Darwin Lemus — computer science junior at UNC Chapel Hill. Computer vision and AI engineer working on robotics, vision, and physics simulation.">
+<meta name="theme-color" content="#08111c">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,6 +17,7 @@
     <a class="nav-brand" href="#top">DARWIN LEMUS</a>
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
+      <li><a href="#path">Path</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -36,8 +37,8 @@
         <p class="coords">Chapel Hill · New York</p>
         <h1>Darwin Lemus</h1>
         <p class="lede">
-          Computer science at UNC. I build things that <em>see</em> and <em>move</em> —
-          robotics, computer vision, and the physics running behind this page.
+          Computer vision and AI engineer. I build things that <em>see</em> and <em>move</em> —
+          robotics, vision, and the physics running behind this page.
         </p>
       </div>
     </div>
@@ -61,64 +62,101 @@
   <section id="work" class="section">
     <div class="section-head">
       <h2>Work</h2>
-      <span class="section-label">Source public on all</span>
+      <span class="section-label">Newest first · source public on all</span>
     </div>
 
     <div class="catalog">
 
-      <article class="entry">
-        <div class="entry-title">
+      <article class="entry" data-cat="xr">
+        <div class="entry-head">
+          <span class="entry-date">Apr 2026</span>
+          <h3>AR Posters</h3>
+          <span class="cat-chip">AR / XR</span>
+        </div>
+        <p>Marker-triggered augmented reality for research posters. Point a phone at the printed poster and 3D models and video play on top of it. Built as a template so anyone presenting can drop in their own assets.</p>
+        <div class="entry-foot">
+          <ul class="tags"><li>A-Frame</li><li>MindAR</li><li>WebXR</li><li>JavaScript</li></ul>
+          <div class="entry-links">
+            <a href="https://lemus-d.github.io/ARPosters/" target="_blank" rel="noopener">Open demo ↗</a>
+            <a href="https://github.com/lemus-D/ARPosters" target="_blank" rel="noopener">Source ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" data-cat="vision">
+        <div class="entry-head">
+          <span class="entry-date">Jan 2026</span>
+          <h3>clashBot</h3>
+          <span class="cat-chip">Vision</span>
+        </div>
+        <p>An automation framework for Clash Royale. It detects units on screen with a trained vision model, tracks the game state in real time, and drives play with an imitation-learning policy trained on recorded matches.</p>
+        <div class="entry-foot">
+          <ul class="tags"><li>Python</li><li>PyTorch</li><li>OpenCV</li><li>Roboflow</li><li>Tesseract</li></ul>
+          <div class="entry-links">
+            <a href="https://github.com/lemus-D/clashBot" target="_blank" rel="noopener">Source ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" data-cat="sim">
+        <div class="entry-head">
+          <span class="entry-date">Dec 2025</span>
           <h3>Three Body Problem</h3>
+          <span class="cat-chip">Simulation</span>
           <span class="badge badge-live">Running above</span>
         </div>
-        <ul class="tags"><li>C++</li><li>raylib</li><li>Numerical methods</li></ul>
-        <div class="entry-links">
-          <a href="#top">Try it ↑</a>
-          <a href="https://github.com/lemus-D/3BodyProblem" target="_blank" rel="noopener">Source ↗</a>
+        <p>A gravitational simulator with a position-Verlet integrator written from scratch. Seven presets, four of which are exact periodic solutions that return to their starting positions after one full period. The version at the top of this page is the same physics, ported to run in your browser.</p>
+        <div class="entry-foot">
+          <ul class="tags"><li>C++</li><li>raylib</li><li>Numerical methods</li></ul>
+          <div class="entry-links">
+            <a href="#top">Try it ↑</a>
+            <a href="https://github.com/lemus-D/3BodyProblem" target="_blank" rel="noopener">Source ↗</a>
+          </div>
         </div>
       </article>
 
-      <article class="entry">
-        <div class="entry-title"><h3>clashBot</h3></div>
-        <ul class="tags"><li>Python</li><li>PyTorch</li><li>OpenCV</li><li>Roboflow</li></ul>
-        <div class="entry-links">
-          <a href="https://github.com/lemus-D/clashBot" target="_blank" rel="noopener">Source ↗</a>
+      <article class="entry" data-cat="ai">
+        <div class="entry-head">
+          <span class="entry-date">Oct 2025</span>
+          <h3>HackNC 2025</h3>
+          <span class="cat-chip">AI tooling</span>
+        </div>
+        <p>A web app that takes in images and documents and uses Google Gemini to pull out their contents and summarize them. Built over one hackathon weekend.</p>
+        <div class="entry-foot">
+          <ul class="tags"><li>Python</li><li>Flask</li><li>Gemini API</li><li>PIL</li></ul>
+          <div class="entry-links">
+            <a href="https://github.com/lemus-D/HackNC2025" target="_blank" rel="noopener">Source ↗</a>
+          </div>
         </div>
       </article>
 
-      <article class="entry">
-        <div class="entry-title"><h3>YOLO Human Detector</h3></div>
-        <ul class="tags"><li>Python</li><li>YOLOv5</li><li>PyTorch</li><li>Telegram API</li></ul>
-        <div class="entry-links">
-          <a href="https://github.com/lemus-D/Yolo-human-detector" target="_blank" rel="noopener">Source ↗</a>
+      <article class="entry" data-cat="data">
+        <div class="entry-head">
+          <span class="entry-date">Sep 2025</span>
+          <h3>Carolina Data Challenge</h3>
+          <span class="cat-chip">Data</span>
+        </div>
+        <p>My entry for the 2025 Carolina Data Challenge. Regression and machine-learning models fit to business data, with the full analysis notebook kept in the repo.</p>
+        <div class="entry-foot">
+          <ul class="tags"><li>Python</li><li>pandas</li><li>scikit-learn</li><li>matplotlib</li></ul>
+          <div class="entry-links">
+            <a href="https://github.com/lemus-D/CDC2025" target="_blank" rel="noopener">Source ↗</a>
+          </div>
         </div>
       </article>
 
-      <article class="entry">
-        <div class="entry-title">
-          <h3>AR Posters</h3>
-          <span class="badge">Live demo</span>
+      <article class="entry" data-cat="vision">
+        <div class="entry-head">
+          <span class="entry-date">Mar 2025</span>
+          <h3>YOLO Human Detector</h3>
+          <span class="cat-chip">Vision</span>
         </div>
-        <ul class="tags"><li>A-Frame</li><li>MindAR</li><li>WebXR</li></ul>
-        <div class="entry-links">
-          <a href="https://lemus-d.github.io/ARPosters/" target="_blank" rel="noopener">Open ↗</a>
-          <a href="https://github.com/lemus-D/ARPosters" target="_blank" rel="noopener">Source ↗</a>
-        </div>
-      </article>
-
-      <article class="entry">
-        <div class="entry-title"><h3>HackNC 2025</h3></div>
-        <ul class="tags"><li>Python</li><li>Flask</li><li>Gemini API</li></ul>
-        <div class="entry-links">
-          <a href="https://github.com/lemus-D/HackNC2025" target="_blank" rel="noopener">Source ↗</a>
-        </div>
-      </article>
-
-      <article class="entry">
-        <div class="entry-title"><h3>Carolina Data Challenge</h3></div>
-        <ul class="tags"><li>Python</li><li>pandas</li><li>scikit-learn</li></ul>
-        <div class="entry-links">
-          <a href="https://github.com/lemus-D/CDC2025" target="_blank" rel="noopener">Source ↗</a>
+        <p>Person detection running on a live webcam stream. When someone enters the frame it fires a Telegram alert with the capture attached.</p>
+        <div class="entry-foot">
+          <ul class="tags"><li>Python</li><li>YOLOv5</li><li>PyTorch</li><li>Telegram API</li></ul>
+          <div class="entry-links">
+            <a href="https://github.com/lemus-D/Yolo-human-detector" target="_blank" rel="noopener">Source ↗</a>
+          </div>
         </div>
       </article>
 
@@ -127,58 +165,120 @@
     <details class="more-repos">
       <summary><span class="chev" aria-hidden="true">›</span> Everything else on GitHub</summary>
       <ul class="repo-list">
-        <li>
-          <a href="https://lemus-d.github.io/EELabDemos/" target="_blank" rel="noopener">EELabDemos</a>
-          <a class="repo-src" href="https://github.com/lemus-D/EELabDemos" target="_blank" rel="noopener">source ↗</a>
-        </li>
-        <li>
-          <a href="https://lemus-d.github.io/researchPosterDemo/" target="_blank" rel="noopener">researchPosterDemo</a>
-          <a class="repo-src" href="https://github.com/lemus-D/researchPosterDemo" target="_blank" rel="noopener">source ↗</a>
-        </li>
-        <li>
-          <a href="https://lemus-d.github.io/demo/" target="_blank" rel="noopener">demo</a>
-          <a class="repo-src" href="https://github.com/lemus-D/demo" target="_blank" rel="noopener">source ↗</a>
-        </li>
-        <li>
-          <a href="https://github.com/lemus-D/Control-Script" target="_blank" rel="noopener">Control-Script</a>
-        </li>
-        <li>
-          <a href="https://github.com/lemus-D/signAlphabetInterpriter" target="_blank" rel="noopener">signAlphabetInterpriter</a>
-        </li>
-        <li>
-          <a href="https://lemus-d.github.io/SN020/" target="_blank" rel="noopener">SN020</a>
-          <a class="repo-src" href="https://github.com/lemus-D/SN020" target="_blank" rel="noopener">source ↗</a>
-        </li>
+        <li><span class="repo-date">May 2026</span><a href="https://lemus-d.github.io/demo/" target="_blank" rel="noopener">demo</a><span class="repo-note">A-Frame / MindAR sandbox</span><a class="repo-src" href="https://github.com/lemus-D/demo" target="_blank" rel="noopener">source ↗</a></li>
+        <li><span class="repo-date">Apr 2026</span><a href="https://lemus-d.github.io/researchPosterDemo/" target="_blank" rel="noopener">researchPosterDemo</a><span class="repo-note">AR research-poster demo</span><a class="repo-src" href="https://github.com/lemus-D/researchPosterDemo" target="_blank" rel="noopener">source ↗</a></li>
+        <li><span class="repo-date">Mar 2026</span><a href="https://lemus-d.github.io/SN020/" target="_blank" rel="noopener">SN020</a><span class="repo-note">Coursework site</span><a class="repo-src" href="https://github.com/lemus-D/SN020" target="_blank" rel="noopener">source ↗</a></li>
+        <li><span class="repo-date">Jan 2026</span><a href="https://lemus-d.github.io/EELabDemos/" target="_blank" rel="noopener">EELabDemos</a><span class="repo-note">AR demos for EE labs</span><a class="repo-src" href="https://github.com/lemus-D/EELabDemos" target="_blank" rel="noopener">source ↗</a></li>
+        <li><span class="repo-date">Jan 2026</span><a href="https://github.com/lemus-D/signAlphabetInterpriter" target="_blank" rel="noopener">signAlphabetInterpriter</a><span class="repo-note">Sign-language alphabet recognition</span></li>
+        <li><span class="repo-date">Dec 2024</span><a href="https://github.com/lemus-D/Control-Script" target="_blank" rel="noopener">Control-Script</a><span class="repo-note">Image-recognition automation</span></li>
       </ul>
     </details>
+  </section>
+
+  <!-- Path ------------------------------------------------------------------->
+  <section id="path" class="section">
+    <div class="section-head">
+      <h2>Path</h2>
+      <span class="section-label">2024 → now</span>
+    </div>
+
+    <ol class="timeline">
+      <li class="tl-item" data-cat="xr">
+        <span class="tl-date">Apr 2026</span>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body">
+          <h3>AR Posters</h3>
+          <p>Augmented reality for printed research posters.</p>
+        </div>
+      </li>
+      <li class="tl-item" data-cat="role">
+        <span class="tl-date">Mar 2026</span>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body">
+          <h3>Computer Vision &amp; AI Engineer — Blue Sky Robotics</h3>
+          <p>Building computer vision and AI systems for a robotics product.</p>
+        </div>
+      </li>
+      <li class="tl-item" data-cat="vision">
+        <span class="tl-date">Jan 2026</span>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body">
+          <h3>clashBot</h3>
+          <p>Vision-driven game automation with a learned policy.</p>
+        </div>
+      </li>
+      <li class="tl-item" data-cat="sim">
+        <span class="tl-date">Dec 2025</span>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body">
+          <h3>Three Body Problem</h3>
+          <p>Wrote my own Verlet integrator. Still tuning it.</p>
+        </div>
+      </li>
+      <li class="tl-item" data-cat="ai">
+        <span class="tl-date">Oct 2025</span>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body">
+          <h3>HackNC 2025</h3>
+          <p>Document and image understanding, built in a weekend.</p>
+        </div>
+      </li>
+      <li class="tl-item" data-cat="data">
+        <span class="tl-date">Sep 2025</span>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body">
+          <h3>Carolina Data Challenge</h3>
+          <p>First real modelling competition.</p>
+        </div>
+      </li>
+      <li class="tl-item" data-cat="vision">
+        <span class="tl-date">Mar 2025</span>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body">
+          <h3>YOLO Human Detector</h3>
+          <p>First time putting a detector on a live camera feed.</p>
+        </div>
+      </li>
+      <li class="tl-item" data-cat="role">
+        <span class="tl-date">Aug 2024</span>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body">
+          <h3>Started at UNC Chapel Hill</h3>
+          <p>Computer science, on the Gates and Robert B. Williamson scholarships.</p>
+        </div>
+      </li>
+      <li class="tl-item" data-cat="role">
+        <span class="tl-date">Jun 2024</span>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body">
+          <h3>Graduated high school</h3>
+          <p>Left New York for North Carolina. Still go back to help the robotics team through build season.</p>
+        </div>
+      </li>
+    </ol>
   </section>
 
   <!-- About ------------------------------------------------------------------>
   <section id="about" class="section">
     <div class="section-head">
       <h2>About</h2>
-      <span class="section-label">UNC Chapel Hill</span>
+      <span class="section-label">UNC Chapel Hill · Class of 2028</span>
     </div>
     <div class="prose">
       <p>
-        I'm a computer science student at UNC Chapel Hill. I split the year between
-        Chapel Hill and New York.
-      </p>
-      <p>
-        I'm a maker first. If I can build the thing instead of reading about it, I will,
-        which is how most of the work on this page started. On campus I write the code
-        for one of the robotics clubs' robots.
-      </p>
-      <p>
-        Most of what I build is software that has to survive contact with the physical
-        world: robots, cameras, and physics simulation. In practice that means a lot of
-        computer vision and a lot of numerical methods.
-      </p>
-      <p>
-        I prefer problems with a checkable answer. The detector either finds the person
-        or it doesn't. The orbit either closes or it doesn't. The simulation at the top
-        of this page returns to its starting position within <strong>0.007 units</strong>
-        after a full period, and getting it there was most of the work.
+        I'm a junior at UNC Chapel Hill studying computer science, and I'll probably pair
+        it with engineering, physics, or a second major in math. I haven't settled on which,
+        mostly because I'd rather keep learning in several directions at once — I think of
+        that as a permanent condition rather than a phase. I'm first generation; my parents
+        came from El Salvador and Guatemala, I grew up in New York, and I'm at Carolina on
+        the <strong>Gates Scholarship</strong> and the <strong>Robert B. Williamson
+        Scholarship</strong>. These days I work as a computer vision and AI engineer at
+        <strong>Blue Sky Robotics</strong>, I help my dad run his business and keep
+        automating the parts of it that shouldn't need a person, and I still go back to my
+        old high school to help their robotics team through build season, mostly on the
+        code. Away from a screen I train jiu-jitsu, lift, cook, and walk more than is
+        strictly necessary. I'm an optimist about where all of this is heading, which is
+        most of the reason I build things in the first place.
       </p>
     </div>
   </section>
@@ -204,10 +304,6 @@
       <li>
         <span class="contact-key">GitHub</span>
         <a href="https://github.com/lemus-D" target="_blank" rel="noopener">github.com/lemus-D ↗</a>
-      </li>
-      <li>
-        <span class="contact-key">Résumé</span>
-        <a href="resume.pdf" target="_blank" rel="noopener">resume.pdf ↗</a>
       </li>
     </ul>
   </section>
